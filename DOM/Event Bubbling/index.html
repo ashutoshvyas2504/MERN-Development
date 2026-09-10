@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+         .grandParent {
+            height: 300px;
+            width: 300px;
+            background-color: lightpink;
+        }
+
+        .parent {
+            height: 200px;
+            width: 200px;
+            background-color: lightskyblue;
+        }
+
+        .child {
+            height: 100px;
+            width: 100px;
+            background-color: lightgreen;
+        } 
+
+       /*
+        * {
+            box-sizing: border-box;
+        }
+
+        .parent {
+            height: 50vh;
+            width: 50vw;
+
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-wrap: wrap;
+        }
+
+        .child {
+            height: 33%;
+            width: 33%;
+            border: 1px solid red;
+        }  */
+    </style>
+</head>
+
+<body>
+    <div class="grandParent">
+        <div class="parent">
+            <div class="child"></div>
+        </div>
+    </div>
+
+    <!-- <div class="parent">
+        <div class="child one"></div>
+        <div class="child two"></div>
+        <div class="child three"></div>
+        <div class="child four"></div>
+        <div class="child five"></div>
+        <div class="child six"></div>
+        <div class="child seven"></div>
+        <div class="child eight"></div>
+        <div class="child nine"></div>
+    </div> -->
+</body>
+
+<script>
+    // Event Bubbling
+    const grandParent = document.querySelector(".grandParent");
+    const parent = document.querySelector(".parent");
+    const child = document.querySelector(".child");
+
+    grandParent.addEventListener("click", function () {
+        console.log("GrandParent Clicked");
+    });
+
+    parent.addEventListener("click", function () {
+        event.stopPropagation(); // stopping event bubble
+        console.log("Parent Clicked");
+        grandParent.removeChild(parent);
+    });
+
+    child.addEventListener("click", function (event) {
+        event.stopPropagation(); // stopping event bubble
+        console.log("Child Clicked");
+        child.style.backgroundColor = "red";
+    });
+
+</script>
+<!-- <script>
+    // Event Delegation
+
+    const parent = document.querySelector(".parent");
+    parent.addEventListener("click", function (event) {
+        const targetElement = event.target;
+        targetElement.innerHTML = "X";
+    });
+</script> -->
+
+</html>
