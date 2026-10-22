@@ -15,6 +15,7 @@ addButton.addEventListener("click", function () {
   taskBox.classList.add("task");
   taskBox.innerHTML = `
         <p contentEditable="false" >${currentTask.trim()}</p>
+       
         <div class="taskOptions">
           <button class="taskStatusbtn incomplete" id="taskStatus">
             Incomplete
